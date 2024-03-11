@@ -1,0 +1,383 @@
+/* Import the Google Font El Messiri */
+@import url('https://fonts.googleapis.com/css2?family=El Messiri:wght@400;700&display=swap');
+
+* {
+  font-family: 'DIN', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  flex-direction: column; /* stack elements vertically */
+  align-items: center;
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: transparent;
+  border: none;
+}
+
+header img {
+  height: 90px;
+  margin-bottom: 10px; /* add space between the logo and the header content */
+}
+
+.header-content {
+  text-align: center;
+  max-width: 600px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  
+}
+
+header h1 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #644a71;
+}
+
+
+
+
+body {
+  /* background-color: #f3f3f3; */
+  background-image: url('./patterns/imim.jpg');
+  background-size: cover;
+}
+
+
+.footer {
+text-align: center;
+}
+
+.card {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.card img.preview {
+  /*display: none;*/
+  width: 100%;
+  height: auto;
+  margin-bottom: 2px;
+  border-radius: 10px; /* add round corners */
+}
+
+.card label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #1E90FF;
+  text-align: right;
+  
+}
+
+.card input[type="text"],
+.card textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f3f3f3;
+  font-size: 18px;
+  color: #333;
+  font-family: 'El Messiri', sans-serif;
+  text-align: right;
+}
+
+.card textarea {
+  min-height: 80px;
+}
+
+.card button[type="submit"] {
+  background-color: #333333;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.card button[type="submit"]:hover {
+  background-color: #176d7a;
+}
+
+.card a {
+  display: inline-block;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #333;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  width: 150px;
+  margin-bottom: 10px;
+  font-family: 'El Messiri', sans-serif;
+}
+
+.card a:hover {
+  background-color: #176d7a;
+  color: #fff;
+}
+
+
+
+
+
+.download-button-container {
+  display: felx;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
+}
+
+
+.share-buttons-container {
+  
+  flex-direction: felx;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+
+.card .download-link {
+  display: none;
+  text-align: center;
+}
+
+.card .download-link.show {
+  display: block;
+  margin: 0 auto;
+  background-color: #333333;
+  color: #fff;
+  padding: 12px 12px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+
+.card .radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  max-width: 520px; /* adjust width to fit two images side-by-side */
+}
+
+.card .radio-group .thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 128px;
+  height: 128px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  
+}
+
+
+.card .radio-group label {
+  margin-right: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #1E90FF;
+  cursor: pointer;
+  
+}
+
+.card .radio-group input[type="radio"] {
+  display: none;
+  outline: none;
+
+
+}
+
+
+
+.card .radio-group label span:before {
+  
+  content: '';
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 64x; /* reduce width */
+  height: 64x; /* reduce height */
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border: none;
+}
+
+.card .radio-group input[type="radio"]:checked + span:before {
+  background-color: #1E90FF;
+  border-color: #1E90FF;
+  border-width: 2px; /* add blue border */
+  border: none;
+}
+
+
+.card .radio-group label span:after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #1E90FF;
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+
+.card .radio-group label:hover span:before {
+  border-color: #1E90FF;
+
+}
+
+.card .radio-group input[type="radio"]:checked + span:after {
+  transform: scale(1);
+}
+
+
+.card .name {
+    font-weight: Bold;
+
+  font-size: 20px;
+}
+
+.card .message {
+  font-size: 12px;
+}
+
+.download-button-container {
+    text-align: center;
+}
+
+.download-link {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 24px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.download-link:hover {
+    background-color: #555;
+}
+
+
+
+
+.previewz {
+  width: 100%;
+  height: auto;
+  margin-bottom: 2px;
+  border-radius: 10px; /* add round corners */
+  
+  
+  align-items: center;
+}
+
+
+.card label {
+  /* Existing styles */
+  display: block; /* Change to block to make each label appear on a new line */
+  margin-bottom: 5px; /* Add some space between labels */
+  font-size: 16px; /* Adjust font size for better readability */
+}
+
+.card input[type="text"] {
+  /* Existing styles */
+  width: calc(90% - 20px); /* Take up the entire width of the row */
+  margin-bottom: 10px; /* Add some space between inputs */
+}
+
+.card input[type="color"] {
+  /* New styles */
+  width: 30px; /* Adjust the width of the color palette icon */
+  height: 30px; /* Adjust the height of the color palette icon */
+  padding: 0; /* Remove padding to align with text inputs */
+  margin-top: 10px; /* Add some space between color palettes and inputs */
+}
+
+
+.download-link {
+    display: none; /* Hide the download link initially */
+}
+
+.download-link.show {
+    display: inline-block; /* Display the download link when it's shown */
+}
+
+.download-link {
+    
+    text-align: center;
+    background-color: #333333;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.download-link:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+
+.language-switcher {
+  position: fixed;
+  top: 10px; /* Adjust the top position */
+  left: 10px; /* Adjust the left position */
+  padding: 5px 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.language-switcher:hover {
+  background-color: #555;
+}

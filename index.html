@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>خدمة طباعة رسائل التهنئه</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Importing the DIN font -->
+    <script type="text/javascript" src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=18_i-IVTHHhC77LMk7pw2UMiHqMouLBatk2BWTLg2vqvZ0J1ZLZbwfPMeaTKPgLB" charset="UTF-8"></script><style>
+        @font-face {
+            font-family: 'DIN';
+            src: url('DIN.otf') format('opentype');
+        }
+        /* Add additional CSS styles here */
+    </style>
+    <!-- Linking CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Importing Google Fonts for El Messiri -->
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+</head>
+<body>
+    <header>
+
+        <div class="header-content" id="header_text">
+            <h1>أرسل بطاقة تهنئة رمضان لمن تحب بإسمك</h1>
+        </div>
+    </header>
+
+    <div class="card">
+        <form id="greetingForm" dir="rtl">
+            <!-- Input field with placeholder text -->
+            <input type="text" id="pname" name="pname" required placeholder="يرجى ادخال الاسم">
+            
+            <br><br>
+            <!-- Generate button -->
+            <button type="submit" id="generateButton">عرض البطاقة</button>
+        </form>
+
+        <!-- Preview image will be displayed here -->
+        <div id="imageContainer"></div>
+
+        <br><br>
+
+        <div class="download-button-container">
+            <!-- Download link -->
+            <a href="#" class="download-link" id="downloadLink" download="#">تحميل البطاقة</a>
+        </div>
+    </div>
+    
+    <div class="language-switcher" id="languageButton">EN</div>
+	
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const card = document.querySelector('.card');
+    const greetingForm = document.getElementById('greetingForm');
+    const imageContainers = document.getElementById('imageContainer');
+    const downloadLink = document.getElementById('downloadLink'); // Get the download link element
+    const languageButton = document.getElementById('languageButton'); // Get the language button element
+
+    // Flag to track the current language
+    let isArabic = true;
+    const headerText = document.getElementById('header_text'); // Get the header text element
+    // Function to toggle between Arabic and English
+    const toggleLanguage = () => {
+        isArabic = !isArabic; // Toggle the language flag
+
+        // Change UI elements based on the language
+        if (isArabic) {
+            greetingForm.setAttribute('dir', 'rtl'); // Set direction to right-to-left for Arabic
+            languageButton.textContent = 'EN'; // Update button text to Arabic
+            // Update placeholder text for input field
+            document.getElementById('pname').setAttribute('placeholder', 'يرجى ادخال الاسم');
+            // Update button text
+            document.getElementById('generateButton').textContent = 'عرض البطاقة';
+            // Update download link text
+            document.getElementById('downloadLink').textContent = 'تحميل البطاقة';
+            headerText.innerHTML = '<h1>أرسل بطاقة تهنئة رمضان لمن تحب بإسمك</h1>';
+        } else {
+            greetingForm.setAttribute('dir', 'ltr'); // Set direction to left-to-right for English
+            languageButton.textContent = 'AR'; // Update button text to English
+            // Update placeholder text for input field
+            document.getElementById('pname').setAttribute('placeholder', 'Please enter your name');
+            // Update button text
+            document.getElementById('generateButton').textContent = 'Show Card';
+            // Update download link text
+            document.getElementById('downloadLink').textContent = 'Download Card';
+            headerText.innerHTML = '<h1>Sign and send Ramadan greeting card to your loved ones</h1>';
+        }
+    };
+
+    // Add event listener to the language button
+    languageButton.addEventListener('click', toggleLanguage);
+
+    // Adjust canvas dimensions to match the actual image dimensions
+    const IMAGE_WIDTH_PX = 1921;
+    const IMAGE_HEIGHT_PX = 1921;
+
+    greetingForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const pname = formData.get('pname');
+
+        // Get color values
+        const pnameColor = "#644a71";
+
+        // Draw the page
+        const drawPage = () => {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+
+            const image = new Image();
+            image.src = '/bg.jpg'; // Set the background image source
+
+            image.onload = function() {
+                canvas.width = IMAGE_WIDTH_PX;
+                canvas.height = IMAGE_HEIGHT_PX;
+
+                context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+                context.fillStyle = pnameColor;
+                context.font = '50px DIN'; // Using DIN font
+                context.textAlign = 'center'; // Align text to the center
+
+                // Draw text on the canvas
+                context.fillText(pname, 1500, 1450);
+
+                // Create image element with the generated canvas data
+                const imgData = canvas.toDataURL('image/jpeg');
+                const img = new Image();
+                img.src = imgData;
+                img.classList.add('previewz');
+                imageContainers.appendChild(img);
+
+                // Hide the generate button after image generated
+                document.getElementById('generateButton').style.display = 'none';
+
+                // Show the download link
+                downloadLink.classList.add('show'); // Add the 'show' class to display the link
+                // Set download link href to the generated image data
+                downloadLink.href = imgData;
+                // Set download attribute to the input field value
+                downloadLink.download = `${pname}-greeting-card.jpg`;
+            };
+        };
+
+        // Draw the page
+        drawPage();
+    });
+});
+
+</script>
+
+
+    <footer>
+        <br>
+       
+    </footer>
+</body>
+</html>
